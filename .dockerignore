@@ -1,0 +1,14 @@
+.git
+.github
+.idea
+.tools/bin
+.tools/venv
+.tools/npm
+.coverage
+dist
+levelsense-interceptor
+*.md
+docker-compose.yml
+.env*
+*.raw
+raw

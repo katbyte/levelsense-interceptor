@@ -1,0 +1,12 @@
+# HELP levelsense_cloud_replies_total Answers from the Level Sense cloud, by HTTP status; unreachable for the times it gave none.
+# TYPE levelsense_cloud_replies_total counter
+levelsense_cloud_replies_total{status="200"} 0
+levelsense_cloud_replies_total{status="unreachable"} 0
+# HELP levelsense_offline_mode Whether the freezer alarms are answered here and the cloud sent nothing (1), or their requests are passed on to the cloud (0).
+# TYPE levelsense_offline_mode gauge
+levelsense_offline_mode 0
+# HELP levelsense_requests_total Requests the freezer alarms made, by the path asked for: their reports, their settings, and any other.
+# TYPE levelsense_requests_total counter
+levelsense_requests_total{path="/_device/config"} 0
+levelsense_requests_total{path="/_device/data"} 0
+levelsense_requests_total{path="other"} 0

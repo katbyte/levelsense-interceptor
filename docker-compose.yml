@@ -1,0 +1,47 @@
+# Default always-on deployment. The freezer alarm sends its reports to cloud.level-sense.com on
+# port 80; with the network's DNS answering that name with this host's address, they arrive here,
+# are read, and are passed on to the real cloud. Until there is a release on ghcr.io this builds
+# the image from source; once there is, set image: ghcr.io/katbyte/levelsense-interceptor:<version>
+# and drop build. The image's own healthcheck asks /healthz on the default readings port; add a
+# healthcheck here if LEVELSENSE_INTERCEPTOR_METRICS_LISTEN names another.
+#
+# Port 80 on the host has to be free for the freezer: a reverse proxy already there, sending
+# everything to HTTPS, would turn the freezer away, since it only speaks plain HTTP.
+
+networks:
+  net:
+    name: net
+
+services:
+  levelsense-interceptor:
+    build: .
+    image: levelsense-interceptor
+    container_name: levelsense-interceptor
+    hostname: levelsense-interceptor
+    restart: always
+    networks:
+      net:
+    ports:
+      # the freezer's requests: the only port it sends to
+      - "80:8080"
+      # the readings for Prometheus and the state for Home Assistant, reachable from the network for a Home Assistant on another machine;
+      # 127.0.0.1:9125:9125 keeps them to this host
+      - "9125:9125"
+    environment:
+      - "TZ=America/Vancouver"
+      - "LEVELSENSE_INTERCEPTOR_LOG=INFO"
+      # - "LEVELSENSE_INTERCEPTOR_CLOUD_DNS=1.1.1.1:53,8.8.8.8:53"  # never the DNS that points the cloud's name here
+      # - "LEVELSENSE_INTERCEPTOR_STALE_AFTER=15m"                   # unheard from this long, Home Assistant is told the freezer is offline
+      # - "LEVELSENSE_INTERCEPTOR_LABELS=hostname=dock"              # labels on every reading
+      # - "LEVELSENSE_INTERCEPTOR_NAMES=LS-0042=garage-freezer"      # a name for each freezer, by the ID it sends, for /state/{name} and its readings
+      # - "LEVELSENSE_INTERCEPTOR_OFFLINE=true"                      # answer the freezer here and send the cloud nothing; the app's alerts stop
+      # a raw copy of every request and answer, to see what the freezer really sends; the folder must be writable
+      # by uid 65532. it holds the freezer's MAC address and ID
+      # - "LEVELSENSE_INTERCEPTOR_RAW_FILE=/raw/freezer.raw"
+      # - "LEVELSENSE_INTERCEPTOR_RAW_MAX_MB=100"
+    # volumes:
+    #   - ./raw:/raw
+    logging:
+      options:
+        max-size: 100m
+        max-file: "1"

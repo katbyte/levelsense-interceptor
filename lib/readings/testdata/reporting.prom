@@ -1,0 +1,64 @@
+# HELP levelsense_alarm_silenced Whether the freezer alarm's alarm has been silenced (1) or not (0).
+# TYPE levelsense_alarm_silenced gauge
+levelsense_alarm_silenced{device="LS-0042",name="garage-freezer"} 0
+# HELP levelsense_battery_volts The battery voltage the freezer alarm last reported.
+# TYPE levelsense_battery_volts gauge
+levelsense_battery_volts{device="LS-0042",name="garage-freezer"} 4.12
+# HELP levelsense_cloud_last_reply_timestamp_seconds When the cloud last answered, in seconds since 1970.
+# TYPE levelsense_cloud_last_reply_timestamp_seconds gauge
+levelsense_cloud_last_reply_timestamp_seconds 1.79248860025e+09
+# HELP levelsense_cloud_replies_total Answers from the Level Sense cloud, by HTTP status; unreachable for the times it gave none.
+# TYPE levelsense_cloud_replies_total counter
+levelsense_cloud_replies_total{status="200"} 29
+levelsense_cloud_replies_total{status="502"} 1
+levelsense_cloud_replies_total{status="unreachable"} 1
+# HELP levelsense_cloud_reply_seconds How long the cloud took to give its last answer.
+# TYPE levelsense_cloud_reply_seconds gauge
+levelsense_cloud_reply_seconds 0.212
+# HELP levelsense_config_waiting Whether the cloud's answer to the last report said new settings are waiting for the freezer alarm (1) or not (0).
+# TYPE levelsense_config_waiting gauge
+levelsense_config_waiting{device="LS-0042",name="garage-freezer"} 0
+# HELP levelsense_device_info Always 1, with the freezer alarm's MAC address, the firmware it runs, and the address it last reported from.
+# TYPE levelsense_device_info gauge
+levelsense_device_info{address="10.0.5.50",device="LS-0042",firmware="SENTRY_020122",mac="AA:BB:CC:DD:EE:FF",name="garage-freezer"} 1
+levelsense_device_info{address="10.0.5.51",device="LS-0043",firmware="",mac="",name="LS-0043"} 1
+# HELP levelsense_device_state The state number the freezer alarm reports: 0 in normal running, and what else it can mean is not documented.
+# TYPE levelsense_device_state gauge
+levelsense_device_state{device="LS-0042",name="garage-freezer"} 0
+# HELP levelsense_humidity_percent The relative humidity the freezer alarm last reported.
+# TYPE levelsense_humidity_percent gauge
+levelsense_humidity_percent{device="LS-0042",name="garage-freezer"} 41.2
+# HELP levelsense_last_report_timestamp_seconds When the freezer alarm last reported, in seconds since 1970.
+# TYPE levelsense_last_report_timestamp_seconds gauge
+levelsense_last_report_timestamp_seconds{device="LS-0042",name="garage-freezer"} 1.7924886e+09
+levelsense_last_report_timestamp_seconds{device="LS-0043",name="LS-0043"} 1.79248854e+09
+# HELP levelsense_offline_mode Whether the freezer alarms are answered here and the cloud sent nothing (1), or their requests are passed on to the cloud (0).
+# TYPE levelsense_offline_mode gauge
+levelsense_offline_mode 0
+# HELP levelsense_relay_on Whether the freezer alarm's relay is switched on (1) or not (0).
+# TYPE levelsense_relay_on gauge
+levelsense_relay_on{device="LS-0042",name="garage-freezer"} 0
+# HELP levelsense_reports_total Reports the freezer alarm has sent.
+# TYPE levelsense_reports_total counter
+levelsense_reports_total{device="LS-0042",name="garage-freezer"} 2
+levelsense_reports_total{device="LS-0043",name="LS-0043"} 1
+# HELP levelsense_requests_total Requests the freezer alarms made, by the path asked for: their reports, their settings, and any other.
+# TYPE levelsense_requests_total counter
+levelsense_requests_total{path="/_device/config"} 1
+levelsense_requests_total{path="/_device/data"} 30
+levelsense_requests_total{path="other"} 2
+# HELP levelsense_siren_on Whether the freezer alarm's siren is sounding (1) or not (0).
+# TYPE levelsense_siren_on gauge
+levelsense_siren_on{device="LS-0042",name="garage-freezer"} 1
+# HELP levelsense_temperature_celsius The temperature the freezer alarm last reported, as it sent it.
+# TYPE levelsense_temperature_celsius gauge
+levelsense_temperature_celsius{device="LS-0042",name="garage-freezer"} -14.52
+# HELP levelsense_value Every number in the freezer alarm's last report, by the field it came in and its place in a list: those named above and those not.
+# TYPE levelsense_value gauge
+levelsense_value{device="LS-0042",field="battvdc",index="",name="garage-freezer"} 4.12
+levelsense_value{device="LS-0042",field="tempc",index="0",name="garage-freezer"} -14.52
+levelsense_value{device="LS-0042",field="tempc",index="1",name="garage-freezer"} -14.61
+levelsense_value{device="LS-0042",field="tempc",index="2",name="garage-freezer"} -14.4
+# HELP levelsense_wifi_signal_dbm The Wi-Fi signal strength the freezer alarm last reported.
+# TYPE levelsense_wifi_signal_dbm gauge
+levelsense_wifi_signal_dbm{device="LS-0042",name="garage-freezer"} -61

@@ -1,0 +1,15 @@
+.claude/
+.DS_Store
+.idea/
+dist/
+/levelsense-interceptor
+.tools/bin/
+.tools/venv/
+.tools/npm/
+__pycache__/
+.env
+.levelsense-interceptor
+.coverage/
+# raw copies of what the freezer and its cloud sent: its MAC address and ID, never committed
+*.raw
+raw/
