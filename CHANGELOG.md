@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.1.0 (2026-10-20)
 
 The first release: a program that sits between a Level Sense freezer alarm and the Level Sense cloud, and reads the freezer's reports on the way through.
 
