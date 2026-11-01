@@ -3,8 +3,8 @@ module github.com/katbyte/levelsense-interceptor
 go 1.27.1
 
 require (
-	github.com/gookit/color v1.6.1
-	github.com/katbyte/go-kt v0.9.0
+	github.com/gookit/color v1.6.3
+	github.com/katbyte/go-kt v0.9.1
 	github.com/prometheus/client_golang v1.25.0
 	github.com/spf13/cobra v1.10.2
 	github.com/spf13/pflag v1.0.10
